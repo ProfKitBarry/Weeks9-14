@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class EventsDemo : MonoBehaviour
@@ -9,14 +10,18 @@ public class EventsDemo : MonoBehaviour
     //you can store it as an image and use getcomponent to get the transform and stuff
     public RectTransform burger;    //use this to get the rect transform of the ui element
 
-    void Start()
-    {
-        
-    }
+    public UnityEvent OnTimerFinished; //usually it says "On[event]"
+    //event is basically a variable that holds a function
+    public float timerLength = 2;
+    public float t;
 
     void Update()
     {
-        
+        t += Time.deltaTime;
+        if (t > timerLength) {
+            t = 0;
+            OnTimerFinished.Invoke();   //run the function(s) that happen when timer is done
+        }
     }
 
     public void IJustPushedTheButton() {
