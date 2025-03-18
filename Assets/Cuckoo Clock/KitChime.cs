@@ -5,6 +5,7 @@ using UnityEngine;
 public class KitChime : MonoBehaviour
 {
     public KitClock clock;
+    public AudioSource audioSource;
 
     private void Start()
     {
@@ -14,6 +15,10 @@ public class KitChime : MonoBehaviour
     public void Chime(int hour)
     {
         Debug.Log("Chiming "+hour+" o'clock!");
+        if (!audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
     }
 
     public void ChimeWithoutArgument()
