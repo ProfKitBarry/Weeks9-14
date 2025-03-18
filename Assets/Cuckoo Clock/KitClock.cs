@@ -12,7 +12,7 @@ public class KitClock : MonoBehaviour
     public float t;
     public int hour = 0;
 
-    public UnityEvent OnTheHour;
+    public UnityEvent<int> OnTheHour;   //variable that holds a reference to a function
 
     Coroutine clockIsRunning;
     IEnumerator doOneHour;
@@ -47,7 +47,12 @@ public class KitClock : MonoBehaviour
             hourHand.Rotate(0, 0, -(30 / timeAnHourTakes) * Time.deltaTime);
             yield return null;
         }
-        OnTheHour.Invoke();
+        hour++;
+        if (hour == 13)
+        {
+            hour = 1;
+        }
+        OnTheHour.Invoke(hour);
     }
 
     public void StopClock()
