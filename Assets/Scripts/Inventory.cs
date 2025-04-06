@@ -17,6 +17,9 @@ public class Inventory : MonoBehaviour
     // Variable to track the last spawn position
     private float lastSpawnX;
 
+    // Variable to store the initial spawn position (default position)
+    private float initialSpawnX;
+
     // Maximum capacity of the inventory
     public int maxCapacity = 10;
 
@@ -86,25 +89,52 @@ public class Inventory : MonoBehaviour
         }
     }
 
-
     // Method to instantiate the item in the game world at a specified position
     private void InstantiateItemInWorld(Item item)
     {
         if (item.itemPrefab != null && spawnArea != null)
         {
             // Calculate the spawn position along the x-axis with spacing
-            Vector3 spawnPosition = new Vector3(lastSpawnX - 9, spawnArea.position.y, spawnArea.position.z);
+            Vector3 spawnPosition = new Vector3(lastSpawnX -9 , spawnArea.position.y, spawnArea.position.z);
 
             // Instantiate the item prefab at the calculated position
-            Instantiate(item.itemPrefab, spawnPosition, Quaternion.identity);
+            GameObject instantiatedItem = Instantiate(item.itemPrefab, spawnPosition, Quaternion.identity);
             Debug.Log(item.itemName + " instantiated at " + spawnPosition);
+
+            // Add the instantiated item to the list
+            instantiatedItems.Add(instantiatedItem);
 
             // Update the last spawn position based on the spacing
             lastSpawnX += itemSpacing;
         }
-        else
+    }
+
+    // Method to clear the inventory and destroy all instantiated objects
+    public void ClearInventory()
+    {
+        // Destroy all instantiated objects
+        foreach (GameObject instantiatedItem in instantiatedItems)
         {
-            Debug.LogWarning("Item prefab or spawn area not set up.");
+            Destroy(instantiatedItem);
+        }
+
+        // Clear the list of instantiated objects
+        instantiatedItems.Clear();
+
+        // Clear the inventory list
+        items.Clear();
+        Debug.Log("Inventory cleared and all items destroyed.");
+
+        // Reset last spawn position to the initial spawn position
+        lastSpawnX = initialSpawnX;
+    }
+
+    // Update method to check for spacebar press and clear the inventory
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ClearInventory();
         }
     }
 }
