@@ -7,7 +7,15 @@ public class Inventory : MonoBehaviour
 
     public List<Item> items = new List<Item>();
 
-    public Transform spawnArea;  // The area within which items will spawn
+
+    // The area within which items will spawn
+    public Transform spawnArea;
+
+    // Adjustable spacing between items when spawned
+    public float itemSpacing = 2.0f;
+
+    // Variable to track the last spawn position
+    private float lastSpawnX;
 
     // Maximum capacity of the inventory
     public int maxCapacity = 10;
@@ -19,6 +27,8 @@ public class Inventory : MonoBehaviour
         {
             items.Add(item);
             Debug.Log(item.itemName + " added to inventory.");
+            // Instantiate the item in the game world
+            InstantiateItemInWorld(item);
             return true;
         }
         else
@@ -70,6 +80,28 @@ public class Inventory : MonoBehaviour
         else
         {
             Debug.Log(item.itemName + " not in inventory.");
+        }
+    }
+
+
+    // Method to instantiate the item in the game world at a specified position
+    private void InstantiateItemInWorld(Item item)
+    {
+        if (item.itemPrefab != null && spawnArea != null)
+        {
+            // Calculate the spawn position along the x-axis with spacing
+            Vector3 spawnPosition = new Vector3(lastSpawnX, spawnArea.position.y, spawnArea.position.z);
+
+            // Instantiate the item prefab at the calculated position
+            Instantiate(item.itemPrefab, spawnPosition, Quaternion.identity);
+            Debug.Log(item.itemName + " instantiated at " + spawnPosition);
+
+            // Update the last spawn position based on the spacing
+            lastSpawnX += itemSpacing;
+        }
+        else
+        {
+            Debug.LogWarning("Item prefab or spawn area not set up.");
         }
     }
 }
