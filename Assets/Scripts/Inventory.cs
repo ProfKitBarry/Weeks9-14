@@ -60,33 +60,30 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // Method to list all items in the inventory
-    public void ListItems()
+    // Method to use all instantiated items in the scene
+    public void UseAllInstantiatedItems()
     {
-        if (items.Count == 0)
+        foreach (GameObject instantiatedItem in instantiatedItems)
         {
-            Debug.Log("Inventory is empty.");
-            return;
+            // Get the Item component and call Use() if it exists
+            Item item = instantiatedItem.GetComponent<Item>();
+            if (item != null)
+            {
+                item.Use();
+            }
         }
+        // Destroy all instantiated objects
+        foreach (GameObject instantiatedItem in instantiatedItems)
+        {
+            Destroy(instantiatedItem);
+        }
+        // Clear the list of instantiated objects
+        instantiatedItems.Clear();
 
-        Debug.Log("Inventory Items:");
-        foreach (var item in items)
-        {
-            Debug.Log("Item: " + item.itemName + " - " + item.itemDescription);
-        }
-    }
-
-    // Method to use an item from the inventory (calls item's Use method)
-    public void UseItem(Item item)
-    {
-        if (items.Contains(item))
-        {
-            item.Use();  // Call the Use method of the item
-        }
-        else
-        {
-            Debug.Log(item.itemName + " not in inventory.");
-        }
+        // Clear the inventory list
+        items.Clear();
+        // Reset last spawn position to the initial spawn position
+        lastSpawnX = initialSpawnX;
     }
 
     // Method to instantiate the item in the game world at a specified position
@@ -106,6 +103,7 @@ public class Inventory : MonoBehaviour
 
             // Update the last spawn position based on the spacing
             lastSpawnX += itemSpacing;
+
         }
     }
 
@@ -135,6 +133,11 @@ public class Inventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ClearInventory();
+        }
+        // Check if "A" key is pressed
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            UseAllInstantiatedItems(); // Call method to use all instantiated items
         }
     }
 }

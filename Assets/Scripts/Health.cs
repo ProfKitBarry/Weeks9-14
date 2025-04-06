@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;  // For UI components
-using TMPro;  // For TextMesh Pro
+using TMPro;
+using Unity.VisualScripting;  // For TextMesh Pro
 
 public class Health : MonoBehaviour
 {
@@ -32,21 +33,22 @@ public class Health : MonoBehaviour
         UpdateHealthText();  // Update the UI text after taking damage
     }
 
-    // Method to heal the player
-    public void Heal(float amount)
+    // Method to increase health
+    public void IncreaseHealth(float amount)
     {
+        Debug.Log("Increasing health by: " + amount);
         currentHealth += amount;
         if (currentHealth > maxHealth)
         {
-            currentHealth = maxHealth;
+            currentHealth = maxHealth; // Ensure health does not exceed max
         }
-
-        UpdateHealthText();  // Update the UI text after healing
+        UpdateHealthText(); // Update the health UI
     }
 
     // Method to update the UI text with the current health
     private void UpdateHealthText()
     {
+        Debug.Log("IKAMnAga");
         if (healthText != null)
         {
             healthText.text = "Health: " + currentHealth.ToString("F0");  // Display health as an integer

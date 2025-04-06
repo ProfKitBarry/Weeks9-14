@@ -27,12 +27,6 @@ public class RandomItemSpawner : MonoBehaviour
 
             // Choose a random item from the list
             Item itemToAdd = possibleItems[Random.Range(0, possibleItems.Length)];
-
-            // Attempt to add the item to the inventory
-            if (inventory.AddItem(itemToAdd))
-            {
-                Debug.Log(itemToAdd.itemName + " added to inventory.");
-            }
         }
     }
 }
