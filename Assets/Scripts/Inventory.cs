@@ -20,6 +20,9 @@ public class Inventory : MonoBehaviour
     // Maximum capacity of the inventory
     public int maxCapacity = 10;
 
+    // List to track instantiated objects in the world
+    private List<GameObject> instantiatedItems = new List<GameObject>();
+
     // Method to add an item to the inventory
     public bool AddItem(Item item)
     {
@@ -90,7 +93,7 @@ public class Inventory : MonoBehaviour
         if (item.itemPrefab != null && spawnArea != null)
         {
             // Calculate the spawn position along the x-axis with spacing
-            Vector3 spawnPosition = new Vector3(lastSpawnX, spawnArea.position.y, spawnArea.position.z);
+            Vector3 spawnPosition = new Vector3(lastSpawnX - 9, spawnArea.position.y, spawnArea.position.z);
 
             // Instantiate the item prefab at the calculated position
             Instantiate(item.itemPrefab, spawnPosition, Quaternion.identity);
