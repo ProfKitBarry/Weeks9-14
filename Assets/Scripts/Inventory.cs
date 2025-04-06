@@ -4,7 +4,10 @@ using System.Collections.Generic;
 public class Inventory : MonoBehaviour
 {
     // List to hold items in the inventory
+
     public List<Item> items = new List<Item>();
+
+    public Transform spawnArea;  // The area within which items will spawn
 
     // Maximum capacity of the inventory
     public int maxCapacity = 10;

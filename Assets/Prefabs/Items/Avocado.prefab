@@ -101,3 +101,4 @@ MonoBehaviour:
   itemDescription: I hate it
   itemIcon: {fileID: 21300112, guid: 142ff8784e552734f9d6a895491d0ae8, type: 3}
   itemID: 2
+  itemPrefab: {fileID: 6972938773009435336}

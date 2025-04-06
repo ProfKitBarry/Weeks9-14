@@ -101,3 +101,4 @@ MonoBehaviour:
   itemDescription: Its great
   itemIcon: {fileID: 21300040, guid: 142ff8784e552734f9d6a895491d0ae8, type: 3}
   itemID: 3
+  itemPrefab: {fileID: 3347365663248385142}

@@ -10,7 +10,7 @@ public class Item : MonoBehaviour
     public Sprite itemIcon;            // Sprite image for the item (can be set in Unity Inspector)
     public int itemID;                 // Unique ID for the item
 
-    public void InitializeItem(string name, string description, Sprite icon, int id)
+    public void InitializeItem(string name, string description, Sprite icon, int id, GameObject prefab)
     {
         itemName = name;
         itemDescription = description;
