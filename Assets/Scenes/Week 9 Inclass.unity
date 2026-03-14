@@ -180,7 +180,19 @@ MonoBehaviour:
     m_ActionId: 351f2ccd-1f9f-44bf-9bec-d62ac5c5f408
     m_ActionName: 'Player/Move[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 378651490}
+        m_TargetAssemblyTypeName: PlayerInputCodingGym, Assembly-CSharp
+        m_MethodName: Onlook
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6b444451-8a00-4d00-a97e-f47457f736a8
     m_ActionName: 'Player/Look[/XInputControllerWindows/rightStick,/Mouse/delta]'
   - m_PersistentCalls:
@@ -271,6 +283,7 @@ MonoBehaviour:
   directionalInput: {x: 0, y: 0}
   lookVector: {x: 0, y: 0}
   speed: 1
+  barrel: {fileID: 1299542821}
 --- !u!212 &378651491
 SpriteRenderer:
   serializedVersion: 2
@@ -364,7 +377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &392042224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -758,8 +771,8 @@ Transform:
   m_GameObject: {fileID: 1299542821}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01, y: -0.18, z: 0}
-  m_LocalScale: {x: 2.5021, y: 2.5223, z: 1}
+  m_LocalPosition: {x: -0.06, y: 0.1, z: 0}
+  m_LocalScale: {x: 1.0038425, y: 1.5466744, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 378651492}
