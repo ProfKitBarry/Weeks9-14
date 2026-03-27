@@ -24,8 +24,8 @@ public class ClickToMove : MonoBehaviour
     }
     public void OnClick(InputAction.CallbackContext context)
     {
-        bool clicked = context.ReadValue<bool>();
-        if (clicked)
+        float clicked = context.ReadValue<float>();
+        if (clicked > 0.01f)
         {
             moveTowards = clickPos;
         }
