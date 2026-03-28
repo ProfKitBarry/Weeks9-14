@@ -11,24 +11,42 @@ public class Player : MonoBehaviour
     public float missileSpawnPosition;
 
     public GameObject missilePrefab;
-    public GameObject laserPrefab;
+
+    public float durationMissile;
+    public float progressMissile;
+
+    public bool canShootMissile;
 
     //LASER BALL
-    public float duration;
-    public float progress;
+    public float durationLaser;
+    public float progressLaser;
 
-    public bool canShoot;
+    public GameObject laserPrefab;
 
+    public bool canShootLaser;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        progress = 0f;
+        progressMissile = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //PLAYER
         transform.position += new Vector3(xDirection, 0f, 0f) * Time.deltaTime * playerMoveSpeed;
+        
+        //MISSILE
+        if (progressMissile < durationMissile)
+        {
+            progressMissile += Time.deltaTime;            
+        }
+
+        //LASER BALL
+        if (progressLaser < durationLaser)
+        {
+            progressLaser += Time.deltaTime;
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -39,21 +57,33 @@ public class Player : MonoBehaviour
 
     public void OnLeftClick(InputAction.CallbackContext context)
     {
-        progress += Time.deltaTime;
-
-        if (progress > duration)
+        if (progressMissile >= durationMissile)
         {
-            canShoot = true;
+            canShootMissile = true;
         }
 
-        if (canShoot)
+        if (canShootMissile && Mouse.current.leftButton.wasPressedThisFrame)
         {
+            GameObject missileSpawnLeft = Instantiate(missilePrefab, transform.position + new Vector3(-missileSpawnPosition, 0, 0), Quaternion.identity);
+            GameObject missileSpawnRight = Instantiate(missilePrefab, transform.position + new Vector3(missileSpawnPosition, 0, 0), Quaternion.identity);
+
+            canShootMissile = false;
+            progressMissile = 0f;
         }
-        GameObject missileSpawnLeft = Instantiate(missilePrefab, transform.position + new Vector3(-missileSpawnPosition, 0, 0), Quaternion.identity);
-        GameObject missileSpawnRight = Instantiate(missilePrefab, transform.position + new Vector3(missileSpawnPosition, 0, 0), Quaternion.identity);
     }
     public void OnRightClick(InputAction.CallbackContext context)
     {
-        GameObject laserSpawn = Instantiate(laserPrefab, transform.position, Quaternion.identity);
+        if (progressLaser > durationLaser)
+        {
+            canShootLaser = true;
+        }
+
+        if (canShootLaser && Mouse.current.rightButton.wasPressedThisFrame)
+        { 
+            GameObject laserSpawn = Instantiate(laserPrefab, transform.position, Quaternion.identity);
+
+            canShootLaser = false;
+            progressLaser = 0f;
+        }
     }
 }

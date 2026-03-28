@@ -289,9 +289,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   playerMoveSpeed: 5
   xDirection: 0
-  missileSpawnPosition: 10
+  missileSpawnPosition: 0.438
   missilePrefab: {fileID: 7509964947335582407, guid: f0b257260412e7f41ad9fbd9a19aa059, type: 3}
   laserPrefab: {fileID: 320925631640066324, guid: 349240be8536e3e4fb8c7b8e242808b8, type: 3}
+  durationMissile: 0.5
+  progressMissile: 0
+  canShootMissile: 0
+  durationLaser: 1
+  progressLaser: 0
+  canShootLaser: 0
 --- !u!212 &1107164160
 SpriteRenderer:
   serializedVersion: 2
@@ -428,7 +434,19 @@ MonoBehaviour:
     m_ActionId: 6c2ab1b8-8984-453a-af3d-a3c78ae1679a
     m_ActionName: 'Player/Attack 1[/Mouse/leftButton,/Keyboard/enter]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1107164159}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: OnRightClick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 60ecff40-f50c-4a9e-86f2-e352522cad4d
     m_ActionName: 'Player/Attack 2[/Mouse/rightButton]'
   - m_PersistentCalls:
@@ -497,7 +515,7 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1660057539 &9223372036854775807

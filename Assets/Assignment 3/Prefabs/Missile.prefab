@@ -104,4 +104,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d586af4236269a64199e44d7d9af43f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Missile
-  missileSpeed: 8
+  missileSpeed: 15
