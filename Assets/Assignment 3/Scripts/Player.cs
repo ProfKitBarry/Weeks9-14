@@ -18,19 +18,18 @@ public class Player : MonoBehaviour
     public bool canShootMissile;
 
     //LASER BALL
+    public GameObject laserPrefab;
+
     public float durationLaser;
     public float progressLaser;
 
-    public GameObject laserPrefab;
 
     public bool canShootLaser;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         progressMissile = 0f;
     }
 
-    // Update is called once per frame
     void Update()
     {
         //PLAYER
