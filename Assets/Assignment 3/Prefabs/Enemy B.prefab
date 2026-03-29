@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &320925631640066324
+--- !u!1 &8540589979939285418
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8567794436444302017}
-  - component: {fileID: 8197946683047211975}
-  - component: {fileID: 1978799979964399086}
+  - component: {fileID: 3973635050295538462}
+  - component: {fileID: 2558157016633986147}
   m_Layer: 0
-  m_Name: Ball Laser
+  m_Name: Enemy B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8567794436444302017
+--- !u!4 &3973635050295538462
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 320925631640066324}
+  m_GameObject: {fileID: 8540589979939285418}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.94, y: -3.09, z: 0}
+  m_LocalPosition: {x: -3.5, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8197946683047211975
+--- !u!212 &2558157016633986147
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 320925631640066324}
+  m_GameObject: {fileID: 8540589979939285418}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -82,64 +81,13 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2422792842591750396, guid: cdf9a9501b43e784a82a914cdc17f545, type: 3}
+  m_Sprite: {fileID: 5475789533295126977, guid: ec4d23a6811030344805ecd4dae96332, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.6875, y: 0.6875}
+  m_Size: {x: 1.0625, y: 1.125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1978799979964399086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 320925631640066324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b72a6d263a02ac049bc36c744d16ba38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LaserBall
-  laserCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 7.944046
-      outSlope: 7.944046
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.062450837
-    - serializedVersion: 3
-      time: 0.5
-      value: 0
-      inSlope: -8.126521
-      outSlope: -8.126521
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.026413918
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 8.021322
-      outSlope: 8.021322
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.063780785
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 1
-    m_RotationOrder: 4
-  laserBallPosition: {x: 0, y: 0, z: 0}
-  laserBallSpawnPosition: {x: 0, y: 0, z: 0}
-  laserBallSpeed: 6
-  laserBallPathProgress: 0
-  laserBallPathDuration: 1
-  player: {fileID: 2837186576744147311, guid: 7004ce00472bc294691ee235909e8a61, type: 3}

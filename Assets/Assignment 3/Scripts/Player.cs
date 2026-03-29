@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     //MOVEMENT
+    public Vector3 playerPosition;
     public float playerMoveSpeed;
     public float xDirection;
 
@@ -33,6 +34,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         //PLAYER
+        playerPosition = transform.position;
         transform.position += new Vector3(xDirection, 0f, 0f) * Time.deltaTime * playerMoveSpeed;
         
         //MISSILE
@@ -72,7 +74,7 @@ public class Player : MonoBehaviour
     }
     public void OnRightClick(InputAction.CallbackContext context)
     {
-        if (progressLaser > durationLaser)
+        if (progressLaser >= durationLaser)
         {
             canShootLaser = true;
         }

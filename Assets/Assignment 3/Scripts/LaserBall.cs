@@ -1,3 +1,4 @@
+using Unity.Collections;
 using UnityEngine;
 
 public class LaserBall : MonoBehaviour
@@ -5,12 +6,15 @@ public class LaserBall : MonoBehaviour
     public AnimationCurve laserCurve;
 
     public Vector3 laserBallPosition;
+    public Vector3 laserBallSpawnPosition;
     
     public float laserBallSpeed;
     public float laserBallPathProgress;
     public float laserBallPathDuration;
 
-    public bool laserBallPath;
+    //public GameObject player;
+
+    //public Player player;
 
     void Start()
     {
@@ -28,9 +32,13 @@ public class LaserBall : MonoBehaviour
 
         laserBallPosition = transform.position;
 
+        Debug.Log(laserBallSpawnPosition.x + laserCurve.Evaluate(laserBallPathProgress / laserBallPathDuration));
+        laserBallPosition.x += (laserCurve.Evaluate(laserBallPathProgress / laserBallPathDuration))/100;
         laserBallPosition.y += Time.deltaTime * laserBallSpeed;
-        laserBallPosition.x = laserCurve.Evaluate(laserBallPathProgress / laserBallPathDuration);
         laserBallPosition.z = 0f;
+
+        //laserBallSpawnPosition = new Vector3(laserBallPosition.x, laserBallPosition.y, laserBallPosition.z);
+        //laserBallSpawnPosition += new Vector3(laserCurve.Evaluate(laserBallPathProgress / laserBallPathDuration), 0, 0);
 
         Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
 
