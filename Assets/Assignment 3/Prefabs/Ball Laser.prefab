@@ -139,3 +139,6 @@ MonoBehaviour:
     m_RotationOrder: 4
   laserBallPosition: {x: 0, y: 0, z: 0}
   laserBallSpeed: 6
+  laserBallPathProgress: 0
+  laserBallPathDuration: 1
+  laserBallPath: 0

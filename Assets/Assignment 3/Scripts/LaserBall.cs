@@ -10,19 +10,26 @@ public class LaserBall : MonoBehaviour
     public float laserBallPathProgress;
     public float laserBallPathDuration;
 
+    public bool laserBallPath;
+
     void Start()
     {
 
     }
 
     void Update()
-    { 
+    {
         laserBallPathProgress += Time.deltaTime;
+
+        if (laserBallPathProgress > laserBallPathDuration)
+        {
+            laserBallPathProgress = 0f;
+        }
 
         laserBallPosition = transform.position;
 
         laserBallPosition.y += Time.deltaTime * laserBallSpeed;
-        laserBallPosition.x += laserCurve.Evaluate(1);
+        laserBallPosition.x = laserCurve.Evaluate(laserBallPathProgress / laserBallPathDuration);
         laserBallPosition.z = 0f;
 
         Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
