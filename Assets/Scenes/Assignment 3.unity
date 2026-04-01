@@ -287,12 +287,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemies
   enemyA: []
   enemyAPrefab: {fileID: 234504393817144394, guid: 9c1cf9ae59dcc0440bc5c144b37f839c, type: 3}
-  enemyASpawnPosition: {x: -9, y: 2, z: 0}
+  enemyASpawnPosition: {x: -9, y: 6, z: 0}
   enemyASpawnDistance: 3
   enemyB: []
   enemyBPrefab: {fileID: 8540589979939285418, guid: 96104eceeaf38f347a530e98622b5ff2, type: 3}
-  enemyBSpawnPosition: {x: -9, y: 4, z: 0}
+  enemyBSpawnPosition: {x: -9, y: 8, z: 0}
   enemyBSpawnDistance: 3
+  isSpawned: 0
 --- !u!4 &1333293146
 Transform:
   m_ObjectHideFlags: 0
@@ -302,7 +303,7 @@ Transform:
   m_GameObject: {fileID: 1333293144}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: 0}
+  m_LocalPosition: {x: 0, y: 6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

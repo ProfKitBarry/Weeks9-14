@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
     public float durationLaser;
     public float progressLaser;
 
-
     public bool canShootLaser;
     void Start()
     {

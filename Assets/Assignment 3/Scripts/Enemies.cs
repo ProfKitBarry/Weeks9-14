@@ -17,25 +17,34 @@ public class Enemies : MonoBehaviour
     public Vector3 enemyBSpawnPosition;
     public int enemyBSpawnDistance;
 
+    //All Enemies
+    public bool isSpawned;
+
     void Start()
     {
-        for (int i = 0; i < 5; i++)
-        {
-            GameObject newEnemyA = Instantiate(enemyAPrefab, enemyASpawnPosition += new Vector3(enemyASpawnDistance, 0, 0), Quaternion.identity);
-
-            enemyA.Add(newEnemyA);
-        }
-
-        for (int i = 0; i < 5; i++)
-        {
-            GameObject newEnemyB = Instantiate(enemyBPrefab, enemyBSpawnPosition += new Vector3(enemyBSpawnDistance, 0, 0), Quaternion.identity);
-
-            enemyB.Add(newEnemyB);
-        }
+        isSpawned = true;
     }
 
     void Update()
     {
+        if (isSpawned)
+        { 
+            for (int i = 0; i < 5; i++)
+            {
+                GameObject newEnemyA = Instantiate(enemyAPrefab, enemyASpawnPosition += new Vector3(enemyASpawnDistance, 0, 0), Quaternion.identity);
 
+                enemyA.Add(newEnemyA);
+
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                GameObject newEnemyB = Instantiate(enemyBPrefab, enemyBSpawnPosition += new Vector3(enemyBSpawnDistance, 0, 0), Quaternion.identity);
+
+                enemyB.Add(newEnemyB);
+            }
+
+            isSpawned = false;
+        }
     }
 }

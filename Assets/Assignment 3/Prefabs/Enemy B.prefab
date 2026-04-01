@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3973635050295538462}
   - component: {fileID: 2558157016633986147}
+  - component: {fileID: 7604643275389431087}
   m_Layer: 0
   m_Name: Enemy B
   m_TagString: Untagged
@@ -91,3 +92,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &7604643275389431087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8540589979939285418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9490d6c831a7eb14988a4ff0e750a555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyPrefabs
+  speed: 3
+  position: {x: 0, y: 0, z: 0}
+  moveAmount: 5.5
