@@ -1,16 +1,23 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class EnemyPrefabs : MonoBehaviour
+public class EnemyBPrefab : MonoBehaviour
 {
     public float speed;
     public Vector3 position;
     public float moveAmount;
 
+    //Enemy A
+    public SpriteRenderer enemyBSprite;
+    public GameObject enemyBPrefab;
+
+    public SpriteRenderer missile;
+
+    public bool isEnemyAHit;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        enemyBSprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -26,5 +33,14 @@ public class EnemyPrefabs : MonoBehaviour
         }
 
         transform.position = position;
+
+        isEnemyAHit = missile.bounds.Contains(transform.position);
+
+        if (isEnemyAHit)
+        {
+            Debug.Log("EnenmyA Hit");
+
+            //Destory(gameObject);
+        }
     }
 }

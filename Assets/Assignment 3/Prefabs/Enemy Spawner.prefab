@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &311778168260141684
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6165880385938835047}
+  - component: {fileID: 5372476330960931937}
+  m_Layer: 0
+  m_Name: Enemy Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6165880385938835047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311778168260141684}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5372476330960931937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311778168260141684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32f684cec1c54fc47b2e1f45169909a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemies
+  enemyAList: []
+  enemyAPrefab: {fileID: 234504393817144394, guid: 9c1cf9ae59dcc0440bc5c144b37f839c, type: 3}
+  enemyASpawnPosition: {x: -12, y: 6, z: 0}
+  enemyASpawnDistance: 4
+  newEnemyA: {fileID: 234504393817144394, guid: 9c1cf9ae59dcc0440bc5c144b37f839c, type: 3}
+  enemyASprite: {fileID: 4609885890892574226, guid: 9c1cf9ae59dcc0440bc5c144b37f839c, type: 3}
+  missileSprite: {fileID: 7526264955891554682, guid: f0b257260412e7f41ad9fbd9a19aa059, type: 3}
+  missileScript: {fileID: -4535438306725006564, guid: f0b257260412e7f41ad9fbd9a19aa059, type: 3}
+  isEnemyAHit: 0
+  enemyB: []
+  enemyBPrefab: {fileID: 8540589979939285418, guid: 96104eceeaf38f347a530e98622b5ff2, type: 3}
+  enemyBSpawnPosition: {x: -12, y: 8, z: 0}
+  enemyBSpawnDistance: 4
+  newEnemyB: {fileID: 0}
+  isSpawned: 0

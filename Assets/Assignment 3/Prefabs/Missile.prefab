@@ -104,4 +104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d586af4236269a64199e44d7d9af43f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Missile
+  enemyASprite: {fileID: 4609885890892574226, guid: 9c1cf9ae59dcc0440bc5c144b37f839c, type: 3}
+  missileSprite: {fileID: 7526264955891554682}
+  enemyAPrefab: {fileID: -8569226635376758492, guid: 9c1cf9ae59dcc0440bc5c144b37f839c, type: 3}
+  enemiesScript: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
   missileSpeed: 15
+  isHit: 0
