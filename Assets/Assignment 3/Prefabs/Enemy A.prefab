@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 234504393817144394}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.5, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -104,12 +104,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc5714f52b04c24b93806b656219a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAPrefab
-  speed: 3
   position: {x: 0, y: 0, z: 0}
+  speed: 3
   moveAmount: 17
-  enemyAPrefab: {fileID: 234504393817144394}
-  enemyASprite: {fileID: 4609885890892574226}
-  missile: {fileID: -4535438306725006564, guid: f0b257260412e7f41ad9fbd9a19aa059, type: 3}
   isEnemyAHit: 0
-  enemyASpawnPosition: {x: 0, y: 0, z: 0}
-  enemyASpawnDistance: 0
+  enemyASprite: {fileID: 4609885890892574226}
+  missileSprite: {fileID: 7526264955891554682, guid: f0b257260412e7f41ad9fbd9a19aa059, type: 3}
+  missileScript: {fileID: -4535438306725006564, guid: f0b257260412e7f41ad9fbd9a19aa059, type: 3}
+  enemiesScript: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
+  newEnemyA: {fileID: 234504393817144394}

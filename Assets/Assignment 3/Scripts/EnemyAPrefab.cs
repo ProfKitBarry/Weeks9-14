@@ -11,6 +11,11 @@ public class EnemyAPrefab : MonoBehaviour
 
     public bool isEnemyAHit;
 
+    public SpriteRenderer enemyASprite;
+    public SpriteRenderer missileSprite;
+    public Missile missileScript;
+    public Enemies enemiesScript;
+
     void Start()
     {
 
@@ -29,5 +34,14 @@ public class EnemyAPrefab : MonoBehaviour
         }
 
         transform.position = position;
+
+        isEnemyAHit = missileSprite.bounds.Contains(transform.position);
+
+        if (isEnemyAHit)
+        {
+            Debug.Log("Enemy A Hit");
+
+            Destroy(gameObject);
+        }
     }
 }
