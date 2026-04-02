@@ -5,6 +5,9 @@ public class Missile : MonoBehaviour
 {
     public SpriteRenderer enemyASprite;
     public SpriteRenderer missileSprite;
+
+    public GameObject newEnemyA;
+
     public EnemyAPrefab enemyAPrefab;
     public Enemies enemiesScript;
 
@@ -28,15 +31,20 @@ public class Missile : MonoBehaviour
             Destroy(gameObject);
         }
 
-        isHit = missileSprite.bounds.Contains(enemyAPrefab.gameObject.transform.position);
+        EnemyAHit();
+    }
+
+    public void EnemyAHit()
+    {
+        isHit = enemyASprite.bounds.Contains(transform.position);
 
         if (isHit)
         {
             Debug.Log("Missile Hit");
+            //Debug.Log(transform.position);
+            Debug.Log(newEnemyA.transform.position);
 
             Destroy(gameObject);
-
-            enemiesScript.RemoveEnemyA();
         }
     }
 }
