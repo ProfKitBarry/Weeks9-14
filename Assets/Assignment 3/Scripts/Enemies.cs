@@ -31,6 +31,9 @@ public class Enemies : MonoBehaviour
     public float firstEnemyProgress;
     public float firstEnemyDuration;
 
+    public float movingTimeDuration;
+    public float movingTimeProgress;
+
     void Start()
     {
         isSpawned = true;
@@ -55,21 +58,14 @@ public class Enemies : MonoBehaviour
     {
         Debug.Log("Enemy A Coroutine Worked");
 
+        startButton.SetActive(false);
+        
         while (enemyAList.Count < 5)
         {
-            isSpawned = true;
-
-            if (isSpawned == true)
+            for (int i = 0; i < 5; i++)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    newEnemyA = Instantiate(enemyAPrefab, enemyASpawnPosition += new Vector3(enemyASpawnDistance, 0, 0), Quaternion.identity);
-                    enemyAList.Add(newEnemyA);
-                }
-
-                startButton.SetActive(false);
-
-                isSpawned = false;
+                newEnemyA = Instantiate(enemyAPrefab, enemyASpawnPosition += new Vector3(enemyASpawnDistance, 0, 0), Quaternion.identity);
+                enemyAList.Add(newEnemyA);
             }
 
             yield return EnemyACoroutine;
@@ -84,8 +80,7 @@ public class Enemies : MonoBehaviour
         Debug.Log("Enemy A Timer Coroutine Worked");
 
         while (timeToStartMovingProgress < timeToStartMovingDuration)
-        {
-            
+        {            
             timeToStartMovingProgress += Time.deltaTime;
 
             if (timeToStartMovingProgress > timeToStartMovingDuration)
@@ -102,14 +97,16 @@ public class Enemies : MonoBehaviour
     {
         Debug.Log("Enemy A Moving Coroutine Worked");
 
-        firstEnemyProgress = 0f;
+        movingTimeProgress += Time.deltaTime;
 
         GameObject firstEnemy = enemyAList[0];
-        Vector3 enemyACurrentPosition = firstEnemy.transform.position;
 
-        enemyACurrentPosition -= Time.deltaTime * enemyADiveSpeed * transform.up;
+        while (movingTimeProgress < movingTimeDuration)
+        {
+            firstEnemy.transform.position -= Time.deltaTime * enemyADiveSpeed * transform.up;        
+        }
 
-        yield return FirstEnemyAMovingCoroutine;
+        yield return new WaitForSeconds(movingTimeDuration);
     }
 }
 //if (enemyAList.Count < 5)
