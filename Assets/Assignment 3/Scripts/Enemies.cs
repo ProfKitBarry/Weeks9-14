@@ -81,29 +81,6 @@ public class Enemies : MonoBehaviour
             yield return null;
         }
 
-        enemyACoroutine = StartCoroutine(EnemyAMoveOntoScreenUpdate());
-        yield return enemyACoroutine;
-    }
-
-    private IEnumerator EnemyAMoveOntoScreenUpdate()
-    {
-        while (enemyAList[0].transform.position.y > Screen.height - moveAmount)
-        { 
-            for (int i = 0; i < 5; i++)
-            {
-                //Vector3 screenPosition = Camera.main.WorldToScreenPoint();
-            
-                if (enemyAList[i].transform.position.y > Screen.height - moveAmount )
-                {
-                    enemyAList[i].transform.position -= Time.deltaTime * speed * new Vector3(0, 1, 0);
-               
-                }
-                    Debug.Log(enemyAList[i].transform.position);
-
-            }
-            yield return null;
-        }
-
         enemyATimerCoroutine = StartCoroutine(EnemyAAttackUpdate());
         yield return enemyATimerCoroutine;
     }
@@ -115,7 +92,7 @@ public class Enemies : MonoBehaviour
         while (progress < duration)
         {
             progress += Time.deltaTime;
-            enemyAList[0].transform.position -= Time.deltaTime * new Vector3(0, 1, 0);            
+            //enemyAList[0].transform.position -= Time.deltaTime * new Vector3(0, 1, 0);            
         
             yield return null;
         }
