@@ -371,6 +371,18 @@ PrefabInstance:
       value: Enemy Spawner
       objectReference: {fileID: 0}
     - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
+      propertyPath: duration
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
+      propertyPath: moveAmount
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
       propertyPath: startButton
       value: 
       objectReference: {fileID: 1116473343}
@@ -379,8 +391,20 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
+      propertyPath: movingTimeDuration
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
+      propertyPath: enemyAList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
       propertyPath: enemyASpawnPosition.x
       value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
+      propertyPath: enemyAStartAttackDuration
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
       propertyPath: timeToStartMovingDuration

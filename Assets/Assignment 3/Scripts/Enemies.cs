@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
 public class Enemies : MonoBehaviour
@@ -10,6 +12,7 @@ public class Enemies : MonoBehaviour
     public List<GameObject> enemyAList = new List<GameObject>();
     public GameObject enemyAPrefab;
     private GameObject newEnemyA;
+    public EnemyAPrefab enemyAScript;
 
     public Vector3 enemyASpawnPosition;
     public int enemyASpawnDistance;
@@ -17,22 +20,30 @@ public class Enemies : MonoBehaviour
     //All Enemies
     public bool isSpawned;
 
-    public float timeToStartMovingProgress;
-    public float timeToStartMovingDuration;
-
     //ENEMY A COROUTINE
-    public Coroutine EnemyACoroutine;
-    public Coroutine FirstEnemyACoroutine;
-    public Coroutine FirstEnemyAMovingCoroutine;
+    public Coroutine enemyACoroutine;
+    public Coroutine enemyATimerCoroutine;
+    public Coroutine enemyAAttackCoroutine;
+    public float enemyAAttackSpeed;
+
+    public float enemyAStartAttackDuration;
+    public float enemyAStartAttackProgress;
+
+    public float progress;
+    public  float duration;
 
     public GameObject startButton;
-    public float enemyADiveSpeed;
 
-    public float firstEnemyProgress;
-    public float firstEnemyDuration;
+    //EnemyAPrefabioesnka
+    public Vector3 position;
 
-    public float movingTimeDuration;
-    public float movingTimeProgress;
+    public float speed;
+
+    public float moveAmount;
+
+    public bool isEnemySpawned;
+
+
 
     void Start()
     {
@@ -48,18 +59,17 @@ public class Enemies : MonoBehaviour
 
     void Update()
     {
+
     }
+
     public void OnStartButton()
     {
-        EnemyACoroutine = StartCoroutine(SpawnEnemyUpdate());
+        enemyACoroutine = StartCoroutine(EnemiesSpawnUpdate());
+        startButton.SetActive(false);
     }
 
-    private IEnumerator SpawnEnemyUpdate()
+    private IEnumerator EnemiesSpawnUpdate()
     {
-        Debug.Log("Enemy A Coroutine Worked");
-
-        startButton.SetActive(false);
-        
         while (enemyAList.Count < 5)
         {
             for (int i = 0; i < 5; i++)
@@ -67,46 +77,48 @@ public class Enemies : MonoBehaviour
                 newEnemyA = Instantiate(enemyAPrefab, enemyASpawnPosition += new Vector3(enemyASpawnDistance, 0, 0), Quaternion.identity);
                 enemyAList.Add(newEnemyA);
             }
-
-            yield return EnemyACoroutine;
+            
+            yield return null;
         }
 
-        FirstEnemyACoroutine = StartCoroutine(FirstEnemyAUpdate());
-        yield return FirstEnemyACoroutine;
+        enemyACoroutine = StartCoroutine(EnemyAMoveOntoScreenUpdate());
+        yield return enemyACoroutine;
     }
 
-    private IEnumerator FirstEnemyAUpdate()
+    private IEnumerator EnemyAMoveOntoScreenUpdate()
     {
-        Debug.Log("Enemy A Timer Coroutine Worked");
-
-        while (timeToStartMovingProgress < timeToStartMovingDuration)
-        {            
-            timeToStartMovingProgress += Time.deltaTime;
-
-            if (timeToStartMovingProgress > timeToStartMovingDuration)
+        while (enemyAList[0].transform.position.y > Screen.height - moveAmount)
+        { 
+            for (int i = 0; i < 5; i++)
             {
-                FirstEnemyAMovingCoroutine = StartCoroutine(FirstEnemyAMoving());
+                //Vector3 screenPosition = Camera.main.WorldToScreenPoint();
+            
+                if (enemyAList[i].transform.position.y > Screen.height - moveAmount )
+                {
+                    enemyAList[i].transform.position -= Time.deltaTime * speed * new Vector3(0, 1, 0);
+               
+                }
+                    Debug.Log(enemyAList[i].transform.position);
+
             }
-
-            yield return FirstEnemyAMovingCoroutine;
+            yield return null;
         }
 
-
+        enemyATimerCoroutine = StartCoroutine(EnemyAAttackUpdate());
+        yield return enemyATimerCoroutine;
     }
-    private IEnumerator FirstEnemyAMoving()
+
+    private IEnumerator EnemyAAttackUpdate()
     {
-        Debug.Log("Enemy A Moving Coroutine Worked");
+        //Debug.Log("does this work");
 
-        movingTimeProgress += Time.deltaTime;
-
-        GameObject firstEnemy = enemyAList[0];
-
-        while (movingTimeProgress < movingTimeDuration)
+        while (progress < duration)
         {
-            firstEnemy.transform.position -= Time.deltaTime * enemyADiveSpeed * transform.up;        
+            progress += Time.deltaTime;
+            enemyAList[0].transform.position -= Time.deltaTime * new Vector3(0, 1, 0);            
+        
+            yield return null;
         }
-
-        yield return new WaitForSeconds(movingTimeDuration);
     }
 }
 //if (enemyAList.Count < 5)

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4581187405020068317}
   - component: {fileID: 4609885890892574226}
-  - component: {fileID: -8569226635376758492}
   m_Layer: 0
   m_Name: Enemy A
   m_TagString: Untagged
@@ -92,23 +91,3 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &-8569226635376758492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 234504393817144394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fc5714f52b04c24b93806b656219a62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyAPrefab
-  position: {x: 0, y: 0, z: 0}
-  speed: 3
-  moveAmount: 17
-  isEnemyAHit: 0
-  enemyASprite: {fileID: 4609885890892574226}
-  missileSprite: {fileID: 7526264955891554682, guid: f0b257260412e7f41ad9fbd9a19aa059, type: 3}
-  missileScript: {fileID: -4535438306725006564, guid: f0b257260412e7f41ad9fbd9a19aa059, type: 3}
-  enemiesScript: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}

@@ -9,39 +9,33 @@ public class EnemyAPrefab : MonoBehaviour
 
     public float moveAmount;
 
-    public bool isEnemyAHit;
-
-    public SpriteRenderer enemyASprite;
-    public SpriteRenderer missileSprite;
-    public Missile missileScript;
-    public Enemies enemiesScript;
+    public bool isEnemySpawned;
 
     void Start()
     {
-
+        isEnemySpawned = true;
     }
 
     void Update()
     {
-        //Moving
-        position = transform.position;
+        if (isEnemySpawned == true)
+        { 
+            //Moving
+            position = transform.position;
 
-        Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
+            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
 
-        if (screenPosition.y > Screen.height - (moveAmount * 10))
-        {
-            position.y -= Time.deltaTime * speed;
-        }
+            if (screenPosition.y > Screen.height - (moveAmount * 10))
+            {
+                position.y -= Time.deltaTime * speed;
+            }
 
-        transform.position = position;
+            else
+            {
+                isEnemySpawned = false;
+            }
 
-        isEnemyAHit = missileSprite.bounds.Contains(transform.position);
-
-        if (isEnemyAHit)
-        {
-            Debug.Log("Enemy A Hit");
-
-            Destroy(gameObject);
+            transform.position = position;
         }
     }
 }
