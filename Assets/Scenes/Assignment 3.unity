@@ -133,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
       propertyPath: enemyASpawnPosition.x
-      value: 0
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 6165880385938835047, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
       propertyPath: m_LocalPosition.x

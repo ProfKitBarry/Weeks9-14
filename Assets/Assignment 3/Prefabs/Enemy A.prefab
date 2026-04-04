@@ -112,4 +112,3 @@ MonoBehaviour:
   missileSprite: {fileID: 7526264955891554682, guid: f0b257260412e7f41ad9fbd9a19aa059, type: 3}
   missileScript: {fileID: -4535438306725006564, guid: f0b257260412e7f41ad9fbd9a19aa059, type: 3}
   enemiesScript: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
-  newEnemyA: {fileID: 234504393817144394}
