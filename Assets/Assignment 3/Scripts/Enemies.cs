@@ -103,15 +103,18 @@ public class Enemies : MonoBehaviour
             progressDive = 0f;
                 while (progressDive < durationDive)
                 {
-                    progressDive += Time.deltaTime;
-                    //Vector3 startingPosition = enemyAList[0].transform.position;
-                    Vector3 position = Camera.main.ScreenToWorldPoint(enemyAList[i].transform.position);
-                    position.x = enemyAList[i].transform.position.x;
-                    position.y = 2.5f - movingOntoScreenCurve.Evaluate(progressDive / durationDive);
-                    position.z = 0f;
-                    enemyAList[i].transform.position = position;
+                if (enemyAList[i] != null)
+                    {
+                        progressDive += Time.deltaTime;
+                        //Vector3 startingPosition = enemyAList[0].transform.position;
+                        Vector3 position = Camera.main.ScreenToWorldPoint(enemyAList[i].transform.position);
+                        position.x = enemyAList[i].transform.position.x;
+                        position.y = 2.5f - movingOntoScreenCurve.Evaluate(progressDive / durationDive);
+                        position.z = 0f;
+                        enemyAList[i].transform.position = position;
 
-                    yield return null;
+                        yield return null;
+                    }
                 }
             }
        

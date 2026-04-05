@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public float missileSpawnPosition;
 
     public GameObject missilePrefab;
+    public GameObject spawner;
 
     public float durationMissile;
     public float progressMissile;
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
 
     //LASER BALL
     public GameObject laserPrefab;
+
 
     public float durationLaser;
     public float progressLaser;
@@ -66,6 +68,11 @@ public class Player : MonoBehaviour
         {
             GameObject missileSpawnLeft = Instantiate(missilePrefab, transform.position + new Vector3(-missileSpawnPosition, 0, 0), Quaternion.identity);
             GameObject missileSpawnRight = Instantiate(missilePrefab, transform.position + new Vector3(missileSpawnPosition, 0, 0), Quaternion.identity);
+
+            Missile newMissleL =  missileSpawnLeft.GetComponent<Missile>();
+            newMissleL.enemySpawner = spawner;
+            Missile newMissleR = missileSpawnRight.GetComponent<Missile>();
+            newMissleR.enemySpawner = spawner;
 
             canShootMissile = false;
             progressMissile = 0f;

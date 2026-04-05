@@ -1,24 +1,39 @@
 using System.Reflection;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
     public float missileSpeed;
-
+    public GameObject enemySpawner;
+    public SpriteRenderer spriteRenderer;
+    
     void Start()
     {
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
         transform.position += transform.up * Time.deltaTime * missileSpeed;
+        Enemies enemyScriptList = enemySpawner.GetComponent<Enemies>();
 
-        Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
-
-        if (screenPosition.y > Screen.height + 300)
+        for (int i = 0; i < enemyScriptList.enemyAList.Count; i++)
         {
-            Destroy(gameObject);
+            Debug.Log("For loop working" + i);
+            if (enemyScriptList.enemyAList[i] != null)
+                {
+                SpriteRenderer enemyASprite = enemyScriptList.enemyAList[i].GetComponent<SpriteRenderer>();
+                GameObject enemyAGameObject = enemyScriptList.enemyAList[i];
+
+                bool isEnemyAHit = spriteRenderer.bounds.Contains(enemyAGameObject.transform.position);
+
+                if (Vector3.Distance(transform.position, enemyScriptList.enemyAList[i].transform.position) <= 0.5f)
+                {
+                    Debug.Log("Bool working");
+                    Destroy(enemyAGameObject);
+                }
+            }
         }
     }
 }
