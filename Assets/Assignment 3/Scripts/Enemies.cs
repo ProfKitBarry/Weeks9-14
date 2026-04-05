@@ -11,8 +11,6 @@ public class Enemies : MonoBehaviour
     //ENEMY A
     public List<GameObject> enemyAList = new List<GameObject>();
     public GameObject enemyAPrefab;
-    private GameObject newEnemyA;
-    public EnemyAPrefab enemyAScript;
 
     public Vector3 enemyASpawnPosition;
     public int enemyASpawnDistance;
@@ -20,34 +18,21 @@ public class Enemies : MonoBehaviour
     //All Enemies
     public bool isSpawned;
 
-    //ENEMY A COROUTINE
-    public Coroutine enemyACoroutine;
-    public Coroutine enemyATimerCoroutine;
-    public Coroutine enemyAAttackCoroutine;
-    public float enemyAAttackSpeed;
-
-    public float enemyAStartAttackDuration;
-    public float enemyAStartAttackProgress;
-
-    public float progress;
-    public  float duration;
-
     public GameObject startButton;
 
-    //EnemyAPrefabioesnka
-    public Vector3 position;
+    //sedjuiksc
+    public float progressDive;
+    public float durationDive;
 
-    public float speed;
+    public float diveSpeed;
 
-    public float moveAmount;
+    public Coroutine spawnEnemyACoroutine;
+    public Coroutine moveOntoScreenCoroutine;
+    public Coroutine enemyAMoveCoroutine;
 
-    public bool isEnemySpawned;
-
-
-
+    public EnemyAPrefab enemyAPrefabScript;
     void Start()
     {
-        isSpawned = true;
         //newEnemyA = Instantiate(enemyAPrefab, enemyASpawnPosition += new Vector3(enemyASpawnDistance, 0, 0), Quaternion.identity);
 
         //GameObject newEnemyA1 = Instantiate(enemyAPrefab, enemyASpawnPosition, Quaternion.identity);
@@ -59,60 +44,49 @@ public class Enemies : MonoBehaviour
 
     void Update()
     {
-
+        
     }
 
     public void OnStartButton()
     {
-        enemyACoroutine = StartCoroutine(EnemiesSpawnUpdate());
+        isSpawned = true;
         startButton.SetActive(false);
+
+        spawnEnemyACoroutine = StartCoroutine(EnemySpawnUpdate());
     }
 
-    private IEnumerator EnemiesSpawnUpdate()
+    public IEnumerator EnemySpawnUpdate()
     {
-        while (enemyAList.Count < 5)
+        if (isSpawned == true)
         {
-            for (int i = 0; i < 5; i++)
+            while (enemyAList.Count < 5)
             {
-                newEnemyA = Instantiate(enemyAPrefab, enemyASpawnPosition += new Vector3(enemyASpawnDistance, 0, 0), Quaternion.identity);
-                enemyAList.Add(newEnemyA);
+                for (int i = 0; i < 5; i++)
+                {
+                    GameObject newEnemyA = Instantiate(enemyAPrefab, enemyASpawnPosition += new Vector3(enemyASpawnDistance, 0, 0), Quaternion.identity);
+                    enemyAList.Add(newEnemyA);
+
+                    Debug.Log(enemyAList[0]);
+
+                    yield return null;
+                }
             }
-            
-            yield return null;
         }
 
-        enemyATimerCoroutine = StartCoroutine(EnemyAAttackUpdate());
-        yield return enemyATimerCoroutine;
+        enemyAMoveCoroutine = StartCoroutine(enemyAPrefabScript.MoveOntoScreenUpdate());
+        yield return enemyAMoveCoroutine;
     }
 
-    private IEnumerator EnemyAAttackUpdate()
+    public IEnumerator EnemyADiveUpdate()
     {
-        //Debug.Log("does this work");
-
-        while (progress < duration)
+        while (progressDive < durationDive)
         {
-            progress += Time.deltaTime;
-            //enemyAList[0].transform.position -= Time.deltaTime * new Vector3(0, 1, 0);            
-        
+            Debug.Log("dive is working");
+            progressDive += Time.deltaTime;
+
+            enemyAList[0].transform.position -= Time.deltaTime * diveSpeed * new Vector3(0, 1, 0);
+
             yield return null;
         }
     }
 }
-//if (enemyAList.Count < 5)
-//{
-//    isSpawned = true;
-
-//    if (isSpawned == true)
-//    {
-//        for (int i = 0; i < 5; i++)
-//        {
-
-//            enemyAList.Add(newEnemyA);
-//        }
-
-
-//        isSpawned = false;
-//    }
-//}
-
-//enemyASpawnPosition += new Vector3(enemyASpawnDistance, 0, 0)

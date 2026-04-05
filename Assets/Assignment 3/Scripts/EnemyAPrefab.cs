@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Collections;
+using System;
 using UnityEngine;
 
 public class EnemyAPrefab : MonoBehaviour
@@ -11,31 +13,44 @@ public class EnemyAPrefab : MonoBehaviour
 
     public bool isEnemySpawned;
 
+    public float progressMove;
+    public float durationMove;
+
+    public float progressDive;
+    public float durationDive;
+
+    public float diveSpeed;
+
+    public Coroutine moveOntoScreenCoroutine;
+    public Coroutine enemyADiveCoroutine;
+
+    public Enemies enemiesScript;
+
     void Start()
     {
-        isEnemySpawned = true;
+
     }
 
     void Update()
     {
-        if (isEnemySpawned == true)
-        { 
-            //Moving
-            position = transform.position;
 
-            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
+    }
 
-            if (screenPosition.y > Screen.height - (moveAmount * 10))
-            {
-                position.y -= Time.deltaTime * speed;
-            }
+    public IEnumerator MoveOntoScreenUpdate()
+    {
+        Debug.Log("is working");
 
-            else
-            {
-                isEnemySpawned = false;
-            }
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
 
-            transform.position = position;
+        while (progressMove < durationMove)
+        {
+            progressMove += Time.deltaTime;
+            transform.position -= Time.deltaTime * speed * new Vector3(0, 1, 0);
+
+            yield return null;
         }
+        enemyADiveCoroutine = StartCoroutine(enemiesScript.EnemyADiveUpdate());
+        yield return enemyADiveCoroutine;
+        
     }
 }
