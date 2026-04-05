@@ -376,7 +376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
       propertyPath: duration
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
       propertyPath: diveSpeed
@@ -392,7 +392,7 @@ PrefabInstance:
       objectReference: {fileID: 1116473343}
     - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
       propertyPath: durationDive
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
       propertyPath: enemyAPrefabScript
@@ -421,6 +421,50 @@ PrefabInstance:
     - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
       propertyPath: timeToStartMovingDuration
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
+      propertyPath: movingOntoScreenCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
+      propertyPath: movingOntoScreenCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
+      propertyPath: movingOntoScreenCurve.m_Curve.Array.data[1].value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
+      propertyPath: movingOntoScreenCurve.m_Curve.Array.data[0].inSlope
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
+      propertyPath: movingOntoScreenCurve.m_Curve.Array.data[1].inSlope
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
+      propertyPath: movingOntoScreenCurve.m_Curve.Array.data[0].outSlope
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
+      propertyPath: movingOntoScreenCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
+      propertyPath: movingOntoScreenCurve.m_Curve.Array.data[1].outSlope
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
+      propertyPath: movingOntoScreenCurve.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
+      propertyPath: movingOntoScreenCurve.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372476330960931937, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
+      propertyPath: movingOntoScreenCurve.m_Curve.Array.data[1].tangentMode
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 6165880385938835047, guid: 4e4c1eb017bd6e2409772d1f65c24e9a, type: 3}
       propertyPath: m_LocalPosition.x

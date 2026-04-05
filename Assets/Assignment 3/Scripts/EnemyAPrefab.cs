@@ -9,8 +9,7 @@ public class EnemyAPrefab : MonoBehaviour
 
     public float speed;
 
-    public float progressMove;
-    public float durationMove;
+    public float maxMoveLength;
 
     void Start()
     {
@@ -19,11 +18,10 @@ public class EnemyAPrefab : MonoBehaviour
 
     void Update()
     {
-        Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 worldPosition = Camera.main.WorldToScreenPoint(transform.position);
 
-        while (progressMove < durationMove)
+        if (worldPosition.y > Screen.height - maxMoveLength)
         {
-            progressMove += Time.deltaTime;
             transform.position -= Time.deltaTime * speed * new Vector3(0, 1, 0);
         }
     }
