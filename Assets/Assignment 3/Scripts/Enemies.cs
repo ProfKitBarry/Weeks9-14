@@ -20,17 +20,6 @@ public class Enemies : MonoBehaviour
 
     public GameObject startButton;
 
-    //sedjuiksc
-    public float progressDive;
-    public float durationDive;
-
-    public float diveSpeed;
-
-    public Coroutine spawnEnemyACoroutine;
-    public Coroutine moveOntoScreenCoroutine;
-    public Coroutine enemyAMoveCoroutine;
-
-    public EnemyAPrefab enemyAPrefabScript;
     void Start()
     {
         //newEnemyA = Instantiate(enemyAPrefab, enemyASpawnPosition += new Vector3(enemyASpawnDistance, 0, 0), Quaternion.identity);
@@ -44,19 +33,6 @@ public class Enemies : MonoBehaviour
 
     void Update()
     {
-        
-    }
-
-    public void OnStartButton()
-    {
-        isSpawned = true;
-        startButton.SetActive(false);
-
-        spawnEnemyACoroutine = StartCoroutine(EnemySpawnUpdate());
-    }
-
-    public IEnumerator EnemySpawnUpdate()
-    {
         if (isSpawned == true)
         {
             while (enemyAList.Count < 5)
@@ -67,26 +43,14 @@ public class Enemies : MonoBehaviour
                     enemyAList.Add(newEnemyA);
 
                     Debug.Log(enemyAList[0]);
-
-                    yield return null;
                 }
             }
         }
-
-        enemyAMoveCoroutine = StartCoroutine(enemyAPrefabScript.MoveOntoScreenUpdate());
-        yield return enemyAMoveCoroutine;
     }
 
-    public IEnumerator EnemyADiveUpdate()
+    public void OnStartButton()
     {
-        while (progressDive < durationDive)
-        {
-            Debug.Log("dive is working");
-            progressDive += Time.deltaTime;
-
-            enemyAList[0].transform.position -= Time.deltaTime * diveSpeed * new Vector3(0, 1, 0);
-
-            yield return null;
-        }
+        isSpawned = true;
+        startButton.SetActive(false);
     }
 }
