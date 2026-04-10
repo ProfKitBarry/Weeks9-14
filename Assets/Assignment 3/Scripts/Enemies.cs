@@ -98,26 +98,26 @@ public class Enemies : MonoBehaviour
         Vector3 worldPositionPrefab = Camera.main.ScreenToWorldPoint(newSpawnPoint);
 
             
-            for (int i = 0; i < enemyAList.Count; i++)
+        for (int i = 0; i < enemyAList.Count; i++)
+        {
+
+        progressDive = 0f;
+
+            while (progressDive < durationDive)
             {
-            progressDive = 0f;
-                while (progressDive < durationDive)
-                {
                 if (enemyAList[i] != null)
-                    {
-                        progressDive += Time.deltaTime;
-                        //Vector3 startingPosition = enemyAList[0].transform.position;
-                        Vector3 position = Camera.main.ScreenToWorldPoint(enemyAList[i].transform.position);
-                        position.x = enemyAList[i].transform.position.x;
-                        position.y = 2.5f - movingOntoScreenCurve.Evaluate(progressDive / durationDive);
-                        position.z = 0f;
-                        enemyAList[i].transform.position = position;
-
-                        yield return null;
-                    }
+                {
+                    progressDive += Time.deltaTime;
+                    //Vector3 startingPosition = enemyAList[0].transform.position;
+                    Vector3 position = Camera.main.ScreenToWorldPoint(enemyAList[i].transform.position);
+                    position.x = enemyAList[i].transform.position.x;
+                    position.y = 2.5f - movingOntoScreenCurve.Evaluate(progressDive / durationDive);
+                    position.z = 0f;
+                    enemyAList[i].transform.position = position;
                 }
-            }
-       
 
+                yield return null;
+            }
+        }
     }
 }
