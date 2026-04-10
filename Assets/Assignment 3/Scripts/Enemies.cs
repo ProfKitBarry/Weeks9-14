@@ -105,9 +105,11 @@ public class Enemies : MonoBehaviour
 
             while (progressDive < durationDive)
             {
+                progressDive += Time.deltaTime;
+
                 if (enemyAList[i] != null)
                 {
-                    progressDive += Time.deltaTime;
+                    
                     //Vector3 startingPosition = enemyAList[0].transform.position;
                     Vector3 position = Camera.main.ScreenToWorldPoint(enemyAList[i].transform.position);
                     position.x = enemyAList[i].transform.position.x;
@@ -116,7 +118,19 @@ public class Enemies : MonoBehaviour
                     enemyAList[i].transform.position = position;
                 }
 
-                yield return null;
+                if (enemyAList[i] == null)
+                {
+                    progressDive = 0f;
+            }
+
+            //RELINQUISHES CONTROL FOR A FRAME:
+            yield return null;
+            }
+
+            Vector3 screenPosition = Camera.main.WorldToScreenPoint(enemyAList[i].transform.position);
+            if (screenPosition.y < Screen.height)
+            {
+                Destroy(enemyAList[i]);
             }
         }
     }

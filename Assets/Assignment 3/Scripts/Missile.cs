@@ -1,6 +1,7 @@
 using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Missile : MonoBehaviour
 {
@@ -34,6 +35,13 @@ public class Missile : MonoBehaviour
                     Destroy(enemyAGameObject);
                 }
             }
+        }
+
+        Vector3 missilePosition = Camera.main.WorldToScreenPoint(transform.position);
+
+        if (missilePosition.y > Screen.height)
+        {
+            Destroy(gameObject);
         }
     }
 }
