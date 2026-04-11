@@ -2,6 +2,7 @@ using Unity.Collections;
 using UnityEngine;
 
 public class LaserBall : MonoBehaviour
+
 {
     public AnimationCurve laserCurve;
 
@@ -12,13 +13,16 @@ public class LaserBall : MonoBehaviour
     public float laserBallPathProgress;
     public float laserBallPathDuration;
 
+    public GameObject enemySpawner;
+    public SpriteRenderer spriteRenderer;
+
     //public GameObject player;
 
     //public Player player;
 
     void Start()
     {
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -32,13 +36,11 @@ public class LaserBall : MonoBehaviour
 
         laserBallPosition = transform.position;
 
-        Debug.Log(laserBallSpawnPosition.x + laserCurve.Evaluate(laserBallPathProgress / laserBallPathDuration));
         laserBallPosition.x += (laserCurve.Evaluate(laserBallPathProgress / laserBallPathDuration))/100;
         laserBallPosition.y += Time.deltaTime * laserBallSpeed;
         laserBallPosition.z = 0f;
 
-        //laserBallSpawnPosition = new Vector3(laserBallPosition.x, laserBallPosition.y, laserBallPosition.z);
-        //laserBallSpawnPosition += new Vector3(laserCurve.Evaluate(laserBallPathProgress / laserBallPathDuration), 0, 0);
+        transform.position = laserBallPosition;
 
         Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
 
@@ -47,6 +49,36 @@ public class LaserBall : MonoBehaviour
             Destroy(gameObject);
         }
 
-        transform.position = laserBallPosition;
+        Enemies enemyScriptList = enemySpawner.GetComponent<Enemies>();
+
+        for (int i = 0; i < enemyScriptList.enemyAList.Count; i++)
+        {
+            Debug.Log("For loop working" + i);
+
+            if (enemyScriptList.enemyAList[i] != null)
+            {
+                GameObject enemyAGameObject = enemyScriptList.enemyAList[i];
+
+                if (Vector3.Distance(transform.position, enemyScriptList.enemyAList[i].transform.position) <= 1f)
+                {
+                    enemyScriptList.enemyAList[i].SetActive(false);
+                    enemyScriptList.enemyAList.RemoveAt(i);
+                }
+            }
+        }
+        for (int i = 0; i < enemyScriptList.enemyBList.Count; i++)
+        {
+            if (enemyScriptList.enemyBList[i] != null)
+            {
+                SpriteRenderer enemyBSprite = enemyScriptList.enemyBList[i].GetComponent<SpriteRenderer>();
+                GameObject enemyBGameObject = enemyScriptList.enemyBList[i];
+
+                if (Vector3.Distance(transform.position, enemyScriptList.enemyBList[i].transform.position) <= 1f)
+                {
+                    enemyScriptList.enemyBList[i].SetActive(false);
+                    enemyScriptList.enemyBList.RemoveAt(i);
+                }
+            }
+        }
     }
 }

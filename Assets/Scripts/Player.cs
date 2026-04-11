@@ -127,6 +127,9 @@ public class Player : MonoBehaviour
         { 
             GameObject laserSpawn = Instantiate(laserPrefab, transform.position, Quaternion.identity);
 
+            LaserBall newLaserball = laserSpawn.GetComponent<LaserBall>();
+            newLaserball.enemySpawner = spawner;
+
             canShootLaser = false;
             progressLaser = 0f;
         }

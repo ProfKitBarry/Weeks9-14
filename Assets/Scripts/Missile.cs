@@ -41,6 +41,8 @@ public class Missile : MonoBehaviour
                     enemyScriptList.enemyAList[i].SetActive(false);
                     enemyScriptList.enemyAList.RemoveAt(i);
 
+                    Destroy(gameObject);
+
                     //Player playerScript = player.GetComponent<Player>();
                     //playerScript.score += enemyAValue;
                 }
@@ -58,6 +60,8 @@ public class Missile : MonoBehaviour
                 {
                     enemyScriptList.enemyBList[i].SetActive(false);
                     enemyScriptList.enemyBList.RemoveAt(i);
+
+                    Destroy(gameObject);
 
                     //Player playerScript = player.GetComponent<Player>();
                     //playerScript.score += enemyBValue;

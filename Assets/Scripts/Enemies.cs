@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 
 
 public class Enemies : MonoBehaviour
+
 {
     //ALL ENEMIES
     public GameObject startButton;
@@ -127,11 +128,6 @@ public class Enemies : MonoBehaviour
 
     private IEnumerator EnemyADiveUpdate()
     {
-        Vector3 newSpawnPoint = Vector3.zero;
-        newSpawnPoint.y = spawnMaxEnemyB;
-        Vector3 worldPositionPrefab = Camera.main.ScreenToWorldPoint(newSpawnPoint);
-
-
         for (int i = 0; i < enemyAList.Count; i++)
         {
             progressDiveEnemyA = 0f;
@@ -153,13 +149,6 @@ public class Enemies : MonoBehaviour
                 yield return null;
             }
         }                   
-                        
-
-        //for (int i = enemyAList.Count; i > 0; i--)
-        //{
-        //    Vector3 positionEnemyA = Camera.main.ScreenToWorldPoint(enemyAList[i].transform.position);
-            
-        //}
     }
 
     private IEnumerator EnemyBMoveOntoScreenUpdate()
@@ -181,11 +170,6 @@ public class Enemies : MonoBehaviour
 
     private IEnumerator EnemyBDiveUpdate()
     {
-        Vector3 newSpawnPoint = Vector3.zero;
-        newSpawnPoint.y = spawnMaxEnemyB;
-        Vector3 worldPositionPrefab = Camera.main.ScreenToWorldPoint(newSpawnPoint);
-
-
         for (int i = 0; i < enemyBList.Count; i++)
         {
             Vector3 position = Camera.main.ScreenToWorldPoint(enemyBList[i].transform.position);
