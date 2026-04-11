@@ -2,6 +2,8 @@ using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using System.Collections;
+using System.Collections.Generic;
 
 public class Missile : MonoBehaviour
 {
@@ -22,6 +24,7 @@ public class Missile : MonoBehaviour
         for (int i = 0; i < enemyScriptList.enemyAList.Count; i++)
         {
             Debug.Log("For loop working" + i);
+
             if (enemyScriptList.enemyAList[i] != null)
                 {
                 SpriteRenderer enemyASprite = enemyScriptList.enemyAList[i].GetComponent<SpriteRenderer>();
@@ -32,7 +35,9 @@ public class Missile : MonoBehaviour
                 if (Vector3.Distance(transform.position, enemyScriptList.enemyAList[i].transform.position) <= 0.5f)
                 {
                     Debug.Log("Bool working");
-                    Destroy(enemyAGameObject);
+
+                    enemyScriptList.enemyAList[i].SetActive(false);
+                    enemyScriptList.enemyAList.RemoveAt(i);
                 }
             }
         }

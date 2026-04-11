@@ -47,6 +47,14 @@ public class Enemies : MonoBehaviour
 
     void Update()
     {
+        
+    }
+
+    public void OnStartButton()
+    {
+        isSpawned = true;
+        startButton.SetActive(false);
+
         if (isSpawned == true)
         {
             while (enemyAList.Count < 5)
@@ -63,12 +71,6 @@ public class Enemies : MonoBehaviour
                 }
             }
         }
-    }
-
-    public void OnStartButton()
-    {
-        isSpawned = true;
-        startButton.SetActive(false);
 
         moveOntoScreenCoroutine = StartCoroutine(MoveOntoScreenUpdate());
     }
@@ -100,38 +102,30 @@ public class Enemies : MonoBehaviour
             
         for (int i = 0; i < enemyAList.Count; i++)
         {
-
-        progressDive = 0f;
-
+            Vector3 position = Camera.main.ScreenToWorldPoint(enemyAList[i].transform.position);
+            progressDive = 0f;
+            
             while (progressDive < durationDive)
             {
                 progressDive += Time.deltaTime;
 
                 if (enemyAList[i] != null)
-                {
-                    
+                {                    
                     //Vector3 startingPosition = enemyAList[0].transform.position;
-                    Vector3 position = Camera.main.ScreenToWorldPoint(enemyAList[i].transform.position);
                     position.x = enemyAList[i].transform.position.x;
                     position.y = 2.5f - movingOntoScreenCurve.Evaluate(progressDive / durationDive);
                     position.z = 0f;
                     enemyAList[i].transform.position = position;
+
+                }                     
+                
+                if (position.y < -Screen.height)
+                {
+                    enemyAList.RemoveAt(i);
                 }
 
-                if (enemyAList[i] == null)
-                {
-                    progressDive = 0f;
-            }
-
-            //RELINQUISHES CONTROL FOR A FRAME:
-            yield return null;
-            }
-
-            Vector3 screenPosition = Camera.main.WorldToScreenPoint(enemyAList[i].transform.position);
-            if (screenPosition.y < Screen.height)
-            {
-                Destroy(enemyAList[i]);
-            }
+                yield return null;
+            }            
         }
     }
 }
