@@ -4,12 +4,17 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 public class Missile : MonoBehaviour
 {
     public float missileSpeed;
     public GameObject enemySpawner;
-    public SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;  
+
+    public GameObject player;
+    public int enemyAValue = 50;
+    public int enemyBValue = 100;
     
     void Start()
     {
@@ -26,27 +31,49 @@ public class Missile : MonoBehaviour
             Debug.Log("For loop working" + i);
 
             if (enemyScriptList.enemyAList[i] != null)
-                {
-                SpriteRenderer enemyASprite = enemyScriptList.enemyAList[i].GetComponent<SpriteRenderer>();
+                {                
                 GameObject enemyAGameObject = enemyScriptList.enemyAList[i];
 
                 bool isEnemyAHit = spriteRenderer.bounds.Contains(enemyAGameObject.transform.position);
 
                 if (Vector3.Distance(transform.position, enemyScriptList.enemyAList[i].transform.position) <= 0.5f)
-                {
-                    Debug.Log("Bool working");
-
+                {                    
                     enemyScriptList.enemyAList[i].SetActive(false);
                     enemyScriptList.enemyAList.RemoveAt(i);
+
+                    Player playerScript = player.GetComponent<Player>();
+                    playerScript.score += enemyAValue;
                 }
             }
         }
 
+        for (int i = 0; i < enemyScriptList.enemyBList.Count; i++)
+        {
+            if (enemyScriptList.enemyBList[i] != null)
+            {
+                SpriteRenderer enemyBSprite = enemyScriptList.enemyBList[i].GetComponent<SpriteRenderer>();
+                GameObject enemyBGameObject = enemyScriptList.enemyBList[i];
+
+                if (Vector3.Distance(transform.position, enemyScriptList.enemyBList[i].transform.position) <= 0.5f)
+                {
+                    enemyScriptList.enemyBList[i].SetActive(false);
+                    enemyScriptList.enemyBList.RemoveAt(i);
+
+                    Player playerScript = player.GetComponent<Player>();
+                    playerScript.score += enemyBValue;
+                }
+            }
+        }
         Vector3 missilePosition = Camera.main.WorldToScreenPoint(transform.position);
 
         if (missilePosition.y > Screen.height)
         {
             Destroy(gameObject);
         }
+    }
+
+    public void ScoreUpdate()
+    {
+        
     }
 }

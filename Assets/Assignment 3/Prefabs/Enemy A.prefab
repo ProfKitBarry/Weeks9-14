@@ -106,4 +106,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAPrefab
   position: {x: 0, y: 0, z: 0}
   speed: 3
-  maxMoveLength: 150
+  maxMoveLength: 200

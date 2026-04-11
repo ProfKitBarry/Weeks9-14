@@ -1,5 +1,7 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Player : MonoBehaviour
 {
@@ -27,9 +29,20 @@ public class Player : MonoBehaviour
     public float progressLaser;
 
     public bool canShootLaser;
+
+    //COLLISIONS
+    public Enemies enemySpawner;
+    public SpriteRenderer playerSpriteRenderer;
+
+    //SCORE
+    public TextMeshProUGUI scoreText;
+    public int score;
+
     void Start()
     {
         progressMissile = 0f;
+        score = 0;
+        playerSpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -37,11 +50,11 @@ public class Player : MonoBehaviour
         //PLAYER
         playerPosition = transform.position;
         transform.position += new Vector3(xDirection, 0f, 0f) * Time.deltaTime * playerMoveSpeed;
-        
+
         //MISSILE
         if (progressMissile < durationMissile)
         {
-            progressMissile += Time.deltaTime;            
+            progressMissile += Time.deltaTime;
         }
 
         //LASER BALL
@@ -49,6 +62,31 @@ public class Player : MonoBehaviour
         {
             progressLaser += Time.deltaTime;
         }
+
+        //COLLISIONS
+        Enemies enemyScriptList = enemySpawner.GetComponent<Enemies>();
+
+        for (int i = 0; i < enemyScriptList.enemyAList.Count; i++)
+        {
+            GameObject enemyAGameObject = enemyScriptList.enemyAList[i];
+
+            if (Vector3.Distance(transform.position, enemyScriptList.enemyAList[i].transform.position) <= 1)
+            {
+                Destroy(gameObject);
+            }
+        }
+        for (int i = 0; i < enemyScriptList.enemyBList.Count; i++)
+        {
+            GameObject enemyBGameObject = enemyScriptList.enemyBList[i];
+
+            if (Vector3.Distance(transform.position, enemyScriptList.enemyBList[i].transform.position) <= 1)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        //SCORE
+        scoreText.text = "Score: " + score;
     }
 
     public void OnMove(InputAction.CallbackContext context)
