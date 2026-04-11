@@ -7,14 +7,15 @@ using System.Collections.Generic;
 using TMPro;
 
 public class Missile : MonoBehaviour
+
 {
     public float missileSpeed;
     public GameObject enemySpawner;
     public SpriteRenderer spriteRenderer;  
 
-    public GameObject player;
-    public int enemyAValue = 50;
-    public int enemyBValue = 100;
+    //public GameObject player;
+    //public int enemyAValue = 50;
+    //public int enemyBValue = 100;
     
     void Start()
     {
@@ -24,6 +25,7 @@ public class Missile : MonoBehaviour
     void Update()
     {
         transform.position += transform.up * Time.deltaTime * missileSpeed;
+
         Enemies enemyScriptList = enemySpawner.GetComponent<Enemies>();
 
         for (int i = 0; i < enemyScriptList.enemyAList.Count; i++)
@@ -34,15 +36,13 @@ public class Missile : MonoBehaviour
                 {                
                 GameObject enemyAGameObject = enemyScriptList.enemyAList[i];
 
-                bool isEnemyAHit = spriteRenderer.bounds.Contains(enemyAGameObject.transform.position);
-
                 if (Vector3.Distance(transform.position, enemyScriptList.enemyAList[i].transform.position) <= 0.5f)
                 {                    
                     enemyScriptList.enemyAList[i].SetActive(false);
                     enemyScriptList.enemyAList.RemoveAt(i);
 
-                    Player playerScript = player.GetComponent<Player>();
-                    playerScript.score += enemyAValue;
+                    //Player playerScript = player.GetComponent<Player>();
+                    //playerScript.score += enemyAValue;
                 }
             }
         }
@@ -59,8 +59,8 @@ public class Missile : MonoBehaviour
                     enemyScriptList.enemyBList[i].SetActive(false);
                     enemyScriptList.enemyBList.RemoveAt(i);
 
-                    Player playerScript = player.GetComponent<Player>();
-                    playerScript.score += enemyBValue;
+                    //Player playerScript = player.GetComponent<Player>();
+                    //playerScript.score += enemyBValue;
                 }
             }
         }
