@@ -116,10 +116,6 @@ public class Enemies : MonoBehaviour
             enemyAMoveOntoScreenCoroutine = StartCoroutine(EnemyAMoveOntoScreenUpdate());
         }
 
-        if (isCoroutinePaused || isSpawned == false)
-        {
-        }
-
         //SCORE
         scoreText.text = "Score: " + score;
     }
@@ -174,11 +170,6 @@ public class Enemies : MonoBehaviour
             {
                 EnemyBDiveCoroutine = StartCoroutine(EnemyBDiveUpdate());
                 yield return EnemyBDiveCoroutine;
-            }
-
-            if (enemyAList[i].transform.position.y < -8)
-            {
-                enemyAList.RemoveAt(i);
             }
         }                   
     }
