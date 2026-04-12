@@ -16,6 +16,9 @@ public class LaserBall : MonoBehaviour
     public GameObject enemySpawner;
     public SpriteRenderer spriteRenderer;
 
+    public int enemyAValue = 50;
+    public int enemyBValue = 100;
+
     //public GameObject player;
 
     //public Player player;
@@ -63,6 +66,9 @@ public class LaserBall : MonoBehaviour
                 {
                     enemyScriptList.enemyAList[i].SetActive(false);
                     enemyScriptList.enemyAList.RemoveAt(i);
+
+                    enemyScriptList.score += enemyAValue;
+                    Debug.Log("Score: " + enemyScriptList.score);
                 }
             }
         }
@@ -77,6 +83,9 @@ public class LaserBall : MonoBehaviour
                 {
                     enemyScriptList.enemyBList[i].SetActive(false);
                     enemyScriptList.enemyBList.RemoveAt(i);
+
+                    enemyScriptList.score += enemyBValue;
+                    Debug.Log("Score: " + enemyScriptList.score);
                 }
             }
         }

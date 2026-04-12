@@ -13,10 +13,9 @@ public class Missile : MonoBehaviour
     public GameObject enemySpawner;
     public SpriteRenderer spriteRenderer;  
 
-    //public GameObject player;
-    //public int enemyAValue = 50;
-    //public int enemyBValue = 100;
-    
+    public int enemyAValue = 50;
+    public int enemyBValue = 100;
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -43,8 +42,8 @@ public class Missile : MonoBehaviour
 
                     Destroy(gameObject);
 
-                    //Player playerScript = player.GetComponent<Player>();
-                    //playerScript.score += enemyAValue;
+                    enemyScriptList.score += enemyAValue;
+                    Debug.Log("Score: " + enemyScriptList.score);
                 }
             }
         }
@@ -62,9 +61,9 @@ public class Missile : MonoBehaviour
                     enemyScriptList.enemyBList.RemoveAt(i);
 
                     Destroy(gameObject);
-
-                    //Player playerScript = player.GetComponent<Player>();
-                    //playerScript.score += enemyBValue;
+                    
+                    enemyScriptList.score += enemyBValue;
+                    Debug.Log("Score: " + enemyScriptList.score);
                 }
             }
         }

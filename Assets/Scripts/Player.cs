@@ -34,14 +34,9 @@ public class Player : MonoBehaviour
     public Enemies enemySpawner;
     public SpriteRenderer playerSpriteRenderer;
 
-    //SCORE
-    public TextMeshProUGUI scoreText;
-    public int score;
-
     void Start()
     {
         progressMissile = 0f;
-        score = 0;
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -84,9 +79,6 @@ public class Player : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-
-        //SCORE
-        scoreText.text = "Score: " + score;
     }
 
     public void OnMove(InputAction.CallbackContext context)
